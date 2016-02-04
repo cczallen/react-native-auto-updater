@@ -8,12 +8,13 @@
 
 #import "ReactNativeAutoUpdater.h"
 #import "StatusBarNotification.h"
-#import "RCTBridge.h"
+//#import "RCTBridge.h"
 
 NSString* const ReactNativeAutoUpdaterLastUpdateCheckDate = @"ReactNativeAutoUpdater Last Update Check Date";
 NSString* const ReactNativeAutoUpdaterCurrentJSCodeMetadata = @"ReactNativeAutoUpdater Current JS Code Metadata";
 
-@interface ReactNativeAutoUpdater() <NSURLSessionDownloadDelegate, RCTBridgeModule>
+//@interface ReactNativeAutoUpdater() <NSURLSessionDownloadDelegate, RCTBridgeModule>
+@interface ReactNativeAutoUpdater() <NSURLSessionDownloadDelegate>
 
 @property NSURL* defaultJSCodeLocation;
 @property NSURL* defaultMetadataFileLocation;
@@ -30,7 +31,7 @@ NSString* const ReactNativeAutoUpdaterCurrentJSCodeMetadata = @"ReactNativeAutoU
 
 @implementation ReactNativeAutoUpdater
 
-RCT_EXPORT_MODULE()
+//RCT_EXPORT_MODULE()
 
 static ReactNativeAutoUpdater *RNAUTOUPDATER_SINGLETON = nil;
 static bool isFirstAccess = YES;
