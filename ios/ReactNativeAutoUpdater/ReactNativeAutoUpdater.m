@@ -440,6 +440,7 @@ static bool isFirstAccess = YES;
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:ReactNativeAutoUpdaterLastUpdateCheckDate];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:ReactNativeAutoUpdaterCurrentJSCodeMetadata];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - NSURLSessionDownloadDelegate
