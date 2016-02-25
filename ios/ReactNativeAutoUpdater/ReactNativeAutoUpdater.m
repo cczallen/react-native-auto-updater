@@ -399,8 +399,7 @@ static bool isFirstAccess = YES;
 }
 
 - (NSString*)createCodeDirectory {
-    NSString* libraryDirectory = [self libraryDirectory];
-    NSString *filePathAndDirectory = [libraryDirectory stringByAppendingPathComponent:@"JSCode"];
+    NSString *filePathAndDirectory = [self codeDirectoryPath];
     NSError *error;
     
     NSFileManager* fileManager = [NSFileManager defaultManager];
@@ -421,6 +420,26 @@ static bool isFirstAccess = YES;
         return nil;
     }
     return filePathAndDirectory;
+}
+
+- (NSString *)codeDirectoryPath {
+    NSString* libraryDirectory = [self libraryDirectory];
+    NSString *filePathAndDirectory = [libraryDirectory stringByAppendingPathComponent:@"JSCode"];
+  
+    return filePathAndDirectory;
+}
+
+- (void)REMOVELocalData {
+    NSString *filePathAndDirectory = [self codeDirectoryPath];
+    NSError *error;
+    
+    NSFileManager* fileManager = [NSFileManager defaultManager];
+    if (![fileManager removeItemAtPath:filePathAndDirectory error:&error]) {
+      NSLog(@"Remove directory error: %@", error);
+    }
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:ReactNativeAutoUpdaterLastUpdateCheckDate];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:ReactNativeAutoUpdaterCurrentJSCodeMetadata];
 }
 
 #pragma mark - NSURLSessionDownloadDelegate

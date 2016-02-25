@@ -97,4 +97,10 @@ typedef NS_ENUM(NSUInteger, ReactNativeAutoUpdaterUpdateType)
  */
 - (void)setHostnameForRelativeDownloadURLs:(NSString*)hostname;
 
+
+/**
+ *  Remove the downloaded metadata, JS Bundle, and reset the LastUpdateCheckDate.
+ */
+- (void)REMOVELocalData;
+
 @end
