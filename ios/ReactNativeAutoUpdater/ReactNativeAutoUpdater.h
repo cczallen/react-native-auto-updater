@@ -10,10 +10,11 @@
 
 typedef NS_ENUM(NSUInteger, ReactNativeAutoUpdaterUpdateType)
 {
-  // Versions are in format Major.Minor.Patch
+  // Versions are in format Major.Minor.Patch.Force
   ReactNativeAutoUpdaterMajorUpdate = 1,   // Updates are only applied if the major version number changes
   ReactNativeAutoUpdaterMinorUpdate,       // (DEFAULT) Updates are applied if major or minor version changes
   ReactNativeAutoUpdaterPatchUpdate,       // Updates are applied if major, minor or patch version changes
+  ReactNativeAutoUpdaterForceUpdate,       // Updates are applied if version changes whatever increase or decrease
 };
 
 @class ReactNativeAutoUpdater;
