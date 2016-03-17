@@ -267,6 +267,12 @@ static bool isFirstAccess = YES;
         }
         
         switch (self.updateType) {
+            case ReactNativeAutoUpdaterForceUpdate: {
+              BOOL isNotEqual = ![currentVersion isEqualToString:version];
+              if (isNotEqual) {
+                shouldDownload = YES;
+              }
+            }
             case ReactNativeAutoUpdaterMajorUpdate: {
                 if (currentMajor < updateMajor) {
                     shouldDownload = YES;
