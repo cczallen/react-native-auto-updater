@@ -272,6 +272,7 @@ static bool isFirstAccess = YES;
               if (isNotEqual) {
                 shouldDownload = YES;
               }
+              break;
             }
             case ReactNativeAutoUpdaterMajorUpdate: {
                 if (currentMajor < updateMajor) {
