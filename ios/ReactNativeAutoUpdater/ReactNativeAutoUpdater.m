@@ -158,12 +158,15 @@ static bool isFirstAccess = YES;
         [[NSUserDefaults standardUserDefaults] setObject:localMetadata forKey:ReactNativeAutoUpdaterCurrentJSCodeMetadata];
     }
     else {
-        if ([[savedMetadata objectForKey:@"version"] compare:[localMetadata objectForKey:@"version"] options:NSNumericSearch] == NSOrderedAscending) {
-            NSData* data = [NSData dataWithContentsOfURL:self.defaultJSCodeLocation];
-            NSString* filename = [NSString stringWithFormat:@"%@/%@", [self createCodeDirectory], @"main.jsbundle"];
-            
-            if ([data writeToFile:filename atomically:YES]) {
-                [[NSUserDefaults standardUserDefaults] setObject:localMetadata forKey:ReactNativeAutoUpdaterCurrentJSCodeMetadata];
+        BOOL isForceUpdateType = (self.updateType == ReactNativeAutoUpdaterForceUpdate);
+        if (!isForceUpdateType) {
+            if ([[savedMetadata objectForKey:@"version"] compare:[localMetadata objectForKey:@"version"] options:NSNumericSearch] == NSOrderedAscending) {
+                NSData* data = [NSData dataWithContentsOfURL:self.defaultJSCodeLocation];
+                NSString* filename = [NSString stringWithFormat:@"%@/%@", [self createCodeDirectory], @"main.jsbundle"];
+                
+                if ([data writeToFile:filename atomically:YES]) {
+                    [[NSUserDefaults standardUserDefaults] setObject:localMetadata forKey:ReactNativeAutoUpdaterCurrentJSCodeMetadata];
+                }
             }
         }
     }
