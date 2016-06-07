@@ -21,6 +21,7 @@ typedef NS_ENUM(NSUInteger, ReactNativeAutoUpdaterUpdateType)
 
 @protocol ReactNativeAutoUpdaterDelegate <NSObject>
 
+- (void)ReactNativeAutoUpdater:(ReactNativeAutoUpdater *)reactiveNativeAutoUpdater startDownloadingFromURL:(NSURL*)url version:(NSString *)version;
 - (void)ReactNativeAutoUpdater:(ReactNativeAutoUpdater *)reactiveNativeAutoUpdater updateDownloadedToURL:(NSURL*)url currentVersion:(NSString *)currentVersion;
 - (void)ReactNativeAutoUpdater:(ReactNativeAutoUpdater *)reactiveNativeAutoUpdater updateDownloadFailed:(NSError *)error;
 

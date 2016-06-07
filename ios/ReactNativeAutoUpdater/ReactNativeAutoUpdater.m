@@ -381,6 +381,11 @@ static bool isFirstAccess = YES;
     
     NSURLSessionDownloadTask* task = [session downloadTaskWithURL:url];
     [task resume];
+  
+  if ([self.delegate respondsToSelector:@selector(ReactNativeAutoUpdater:startDownloadingFromURL:version:)]) {
+    NSString *version = self.updateMetadata[@"version"];
+    [self.delegate ReactNativeAutoUpdater:self startDownloadingFromURL:url version:version];
+  }
 }
 
 - (NSUInteger)numberOfDaysElapsedBetweenLastVersionCheckDate {
