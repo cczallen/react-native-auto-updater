@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'RNAutoUpdater-iOS'
-  s.version      = '0.2.5-6'
+  s.version      = '0.2.5-7'
   s.license      = 'react-native-auto-updater'
   s.homepage     = 'https://github.com/aerofs/react-native-auto-updater'
   s.summary      = 'A library to manage dynamic updates to React Native apps. Available as an NPM Package.'
